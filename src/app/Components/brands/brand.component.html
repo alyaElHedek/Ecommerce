@@ -1,0 +1,60 @@
+<!-- <p>brand works!</p> -->
+
+<h1 class="brandText pt-5">All Brands</h1>
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-3" *ngFor="let brand of allBrands">
+
+
+            <!-- Button trigger modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-6">
+                                        <h1 class="brandText text-start">{{brand.name}}</h1>
+                                        <p class="text-start">{{brand.name}}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img [src]="brand.image" [alt]="brand.name" class="w-100">
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div type="button" class="card" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <img [src]="brand.image" class="card-img-top" height="240" [alt]="brand.name" [title]="brand.name">
+                <div class="card-body">
+                    <p class="card-text text-center">{{brand.name}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

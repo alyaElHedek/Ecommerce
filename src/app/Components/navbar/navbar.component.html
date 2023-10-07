@@ -1,0 +1,75 @@
+<!-- <p>navbar works!</p> -->
+
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="'/'"><i _ngcontent-knd-c20=""
+                class="fa-solid fa-cart-shopping nav-icon"></i>fresh cart</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+
+            <ul *ngIf="isLoggedIn" class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'home'">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'cart'">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'wishList'">Wishlist</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'products'">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'categories'">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'brands'">Brands</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
+
+                <li *ngIf="!isLoggedIn" class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'signup'">register</a>
+                </li>
+                <li *ngIf="!isLoggedIn" class="nav-item">
+                    <a class="nav-link" aria-current="page" [routerLink]="'login'">log in</a>
+                </li>
+
+                <li *ngIf="isLoggedIn" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <i class="fa fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li [routerLink]="'/forgotPassword'"><a class="dropdown-item" >Forgot Password</a></li>
+                    </ul>
+                  </li>
+
+
+
+
+                <li *ngIf="isLoggedIn" class="nav-item">
+                    <a class="position-relative" [routerLink]="'cart'">
+                        <i class="nav-link fa-solid fa-cart-shopping fs-3"></i>
+                        <span class="badge bg-success position-absolute top-1 end-0">{{cartItemsNumber}}</span>
+                    </a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item" (click)="logout()">
+                    <a class="nav-link" aria-current="page" [routerLink]="">log out</a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

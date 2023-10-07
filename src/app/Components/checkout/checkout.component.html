@@ -1,0 +1,38 @@
+<!-- <p>checkout works!</p> -->
+
+<div class="container">
+    <div class="w-75 mx-auto py-5">
+        <form [formGroup]="shippingAddress" (ngSubmit)="onlinePayment()">
+    
+    
+            <label for="details">Details:</label>
+            <input class="form-control mb-3" type="text" formControlName="details" id="details">
+
+            <div *ngIf="shippingAddress.get('details')?.errors && shippingAddress.get('details')?.touched" class="alert alert-danger">
+                <p *ngIf="shippingAddress.get('details')?.getError('required')" class="mb-0">Details is required.</p>
+                <p *ngIf="shippingAddress.get('details')?.getError('minlength')" class="mb-0">Details MinLength is 3.</p>
+            </div>
+    
+            <label for="phone">Phone:</label>
+            <input class="form-control mb-3" type="tel" formControlName="phone" id="phone">
+
+            <div *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.touched" class="alert alert-danger">
+                <p *ngIf="shippingAddress.get('phone')?.getError('required')" class="mb-0">Phone is required.</p>
+                <p *ngIf="shippingAddress.get('phone')?.getError('minlength')" class="mb-0">Phone is Invalid.</p>
+                <p *ngIf="shippingAddress.get('phone')?.getError('maxlength')" class="mb-0">Phone is Invalid.</p>
+            </div>
+    
+            <label for="city">City:</label>
+            <input class="form-control mb-3" type="text" formControlName="city" id="city">
+
+            <div *ngIf="shippingAddress.get('city')?.errors && shippingAddress.get('city')?.touched" class="alert alert-danger">
+                <p *ngIf="shippingAddress.get('city')?.getError('required')" class="mb-0">Phone is required.</p>
+            </div>
+
+
+            <button [disabled]="shippingAddress.invalid" class="btn paymentBtn w-100 mt-5" type="submit">Pay now</button>
+
+        </form>
+    
+    </div>
+</div>

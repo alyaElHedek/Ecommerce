@@ -1,0 +1,15 @@
+.logo{
+    width: 10%;
+}
+.navbar-brand{
+    /* font-family: 'Cookie', cursive; */
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.nav-icon{
+    color: var(--mainColor);
+}
+.nav-item{
+    cursor: pointer;
+}

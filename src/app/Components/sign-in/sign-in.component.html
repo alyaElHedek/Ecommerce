@@ -1,0 +1,51 @@
+<!-- <p>sign-in works!</p> -->
+
+<!-- <p>sign-up works!</p> -->
+
+
+
+<div class="container my-5">
+    <h2>Login now :</h2>
+
+<!-- <h3>{{loginForm.get('name')?.errors | json}}</h3> -->
+
+<div *ngIf="errorMsg" class="alert alert-danger">
+{{errorMsg}}
+</div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+
+        <p *ngIf="loginForm.errors?.['passwordConfirmationerror'] && loginForm.get('rePassword')?.touched" class="alert alert-danger">Password confirmation is Incorrect.</p>
+
+
+<label for="email">Email:</label>
+<input type="email" id="email" formControlName="email" class="form-control mb-2">
+
+<div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="alert alert-danger">
+    <p *ngIf="loginForm.get('email')?.getError('required')" class="mb-0">Email is required.</p>
+    <p *ngIf="loginForm.get('email')?.getError('email')" class="mb-0">Email pattern is Invalid.</p>
+
+</div>
+
+<label for="password">Password:</label>
+<input type="password" id="password" formControlName="password" class="form-control mb-2">
+
+<div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger">
+    <p *ngIf="loginForm.get('password')?.getError('required')" class="mb-0">Password is required.</p>
+    <p *ngIf="loginForm.get('password')?.getError('pattern')" class="mb-0">Password must : <br/>
+        * Start with a letter (either uppercase or lowercase).
+        <br/>
+        * Be between 6 and 9 characters in total.
+        <br/>
+        * Can only contain letters (A-Z or a-z) and numbers (0-9)</p>
+</div>
+
+<div class="d-flex justify-content-between align-items-center">
+<button [disabled]="loginForm.invalid" type="submit" class="button d-block "><i *ngIf="isLoading" class="fa fa-spinner"></i><span *ngIf="!isLoading">Login now</span></button>
+<a [routerLink]="'/forgotPassword'" class="link-primary">Forgot Password</a>
+
+</div>
+    </form>
+
+
+</div>

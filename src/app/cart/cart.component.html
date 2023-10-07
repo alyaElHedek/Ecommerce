@@ -1,0 +1,47 @@
+<!-- <p>cart works!</p> -->
+
+
+
+
+
+
+
+<div class="container px-5 py-5 my-5 lightBG rounded-2">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="cartTitle">Cart Shop</h2>
+        <button  [disabled]="!cartData.data" class="btn btn-primary px-3 py-2 fs-5 "><a class="text-white" [routerLink]="'/checkout'">CheckOut</a></button>
+    </div>
+
+    <p class="cartTitle" *ngIf="!cartData.data">Your cart is empty</p>
+
+    <div class="d-flex justify-content-between" *ngIf="cartData?.data">
+        <h5 class="totalPrice py-3">Total price: <span class="price_num">{{cartData.data?.totalCartPrice}}</span></h5>
+
+        <h5 class="totalItems py-3">Total number of items: <span class="price_num">{{cartData.numOfCartItems}}</span>
+        </h5>
+
+    </div>
+
+
+    <div class="row d-flex align-items-center border-bottom my-3" *ngFor="let item of cartData.data?.products">
+        <div class="col-md-2">
+            <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-100 mb-3">
+        </div>
+        <div class="col-md-8">
+            <h5 class="price_num text-black">{{item.product.title}}</h5>
+            <h6>{{item.price}} EGP</h6>
+            <button class="ps-0 btn text-danger" (click)="removeItem(item.product.id)"><i
+                    class="fa-regular fa-trash-can"></i> Remove</button>
+        </div>
+        <div class="col-md-2">
+            <button class="mx-3 btn btnBorder" (click)="updateItemsCount(item.product.id,item.count+1)">+</button>
+            <span>{{item.count}}</span>
+            <button class="ms-3 btn btnBorder" (click)="updateItemsCount(item.product.id,item.count-1)">-</button>
+        </div>
+    </div>
+
+    <button [disabled]="!cartData.data" class="btn btnBorder px-3 py-2 fs-5 d-block mx-auto" (click)="clearCart()">Clear Your Cart</button>
+
+
+</div>
